@@ -1,4 +1,10 @@
-HEAD
+
+
+<img width="896" height="1200" alt="empoyee-predectin " src="https://github.com/user-attachments/assets/4f75a230-80bd-45ba-b5ae-caa3ad27b728" />
+
+
+
+
 # Employee Attrition Prediction API
 
 A machine learning REST API that predicts whether an employee is likely to leave a company (**attrition**), built with **FastAPI** and a **scikit-learn Logistic Regression** pipeline. The service takes a set of HR-related employee attributes and returns a prediction, class probabilities, and a confidence score.
