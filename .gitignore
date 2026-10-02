@@ -21,7 +21,5 @@ rad.json
 *.flf
 #Test results file
 TestResults.xml
-
-Fastapi/__pycache__/api.cpython-314.pyc
-Schema/__pycache__/userinput.cpython-314.pyc
- 
+__pycache__/
+*.pyc
