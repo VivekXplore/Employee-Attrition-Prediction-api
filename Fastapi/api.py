@@ -1,12 +1,13 @@
-from fastapi import FastAPI,Path
+from fastapi import FastAPI,Path,Form
 from Schema.userinput import UserInput,default_cols
 from fastapi.responses import JSONResponse
 import joblib
 import pandas as pd 
+from typing import Annotated
 app = FastAPI()
 
 model = joblib.load(
-    "/Users/bibekacharya/Documents/Documents/Machine_Learning/Machine_Learning_projects/Logistic_Regression/Model/employee_attrition_pipeline.pkl"
+    "Model/employee_attrition_pipeline.pkl"
 )
 
 MODEL_VERSION= '1.0.0' #usually done with MLflow but here we suppose 
@@ -25,7 +26,7 @@ def health_check():
     }
 
 @app.post('/predict') # use POST for Ml/dl
-def predict(userinput:UserInput):
+def predict(userinput:Annotated[UserInput,Form()]):
 
         # Merge user data with default values
     user_data = {

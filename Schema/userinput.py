@@ -23,19 +23,19 @@ default_cols ={
 }
 class UserInput(BaseModel):
     # we will only take sensible input form user not all 
-    Age:Annotated[int,Field(...,gt=18,strict=True,description='Age of the employee')]
+    Age:Annotated[int,Field(...,gt=18,description='Age of the employee')]
     Gender:Annotated[Literal['Male','Female'],Field(...,description='Your sex M/F')]
     JobRole:Annotated[Literal['Sales Executive', 'Research Scientist', 'Laboratory Technician',
        'Manufacturing Director', 'Healthcare Representative', 'Manager',
        'Sales Representative', 'Research Director', 'Human Resources'],Field(...,description='What work you do in the compnay?')]
-    Education:Annotated[Literal[1,2,3,4,5],Field(...,description=' 1: Below College, 2: College, 3: Bachelor, 4: Master, 5: Doctor')]
+    Education:Annotated[Literal["1","2","3","4","5"],Field(...,description=' 1: Below College, 2: College, 3: Bachelor, 4: Master, 5: Doctor')]
     MonthlyIncome:Annotated[int,Field(...,gt=1000, description='Enter your montly salary')]
-    JobSatisfaction:Annotated[Literal[1,2,3,4],Field(...,description='How satisfied are you with job? 1 = Low, 2 = Medium, 3 = High, and 4 = Very High')]
+    JobSatisfaction:Annotated[Literal["1","2","3","4"],Field(...,description='How satisfied are you with job? 1 = Low, 2 = Medium, 3 = High, and 4 = Very High')]
     Department:Annotated[Literal['Sales', 'Research & Development', 'Human Resources'],Field(...,description='Enter the Deparatment you work in. ')]
     OverTime :Annotated[Literal['Yes','No'],Field(...,description='Do you do OverTime?')]
     BusinessTravel:Annotated[Literal['Travel_Rarely', 'Travel_Frequently', 'Non-Travel'],Field(...,description='How ofteen do you travel for work?')]
     TotalWorkingYears:Annotated[int,Field(...,lt=60,description='How long have you been working in the company?')]
-    WorkLifeBalance:Annotated[Literal[1,2,3,4],Field(...,description='Hows work-life balance? 1 = Bad, 2 = Good, 3 = Better, and 4 = Best')]
+    WorkLifeBalance:Annotated[Literal["1","2","3","4"],Field(...,description='Hows work-life balance? 1 = Bad, 2 = Good, 3 = Better, and 4 = Best')]
     MaritalStatus:Annotated[Literal['Single', 'Married', 'Divorced'],Field(...,description='Are you married?')]
 
 
@@ -63,4 +63,6 @@ class UserInput(BaseModel):
     'StockOptionLevel': int(df['StockOptionLevel'].median()),
     'TrainingTimesLastYear': int(df['TrainingTimesLastYear'].median()) .............
     }    ... there was error so we had to make it global dict '''
+
+
 
