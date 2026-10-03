@@ -3,11 +3,12 @@
 <img width="896" height="1200" alt="empoyee-predectin " src="https://github.com/user-attachments/assets/4f75a230-80bd-45ba-b5ae-caa3ad27b728" />
 
 
+# Employee Attrition Prediction API 
 
-
-# Employee Attrition Prediction API
 
 A machine learning REST API that predicts whether an employee is likely to leave a company (**attrition**), built with **FastAPI** and a **scikit-learn Logistic Regression** pipeline. The service takes a set of HR-related employee attributes and returns a prediction, class probabilities, and a confidence score.
+
+The application is **Dockerized** for consistent deployment and can be run as a standalone Docker container.
 
 ## Overview
 
@@ -29,7 +30,9 @@ The project is intentionally structured to mirror an industry-style layout, sepa
 - **Class-imbalance-aware model** selected specifically to improve recall on the minority ("left the company") class
 - **Health check endpoint** for uptime/readiness monitoring (e.g. load balancers, container orchestrators)
 - **Probability and confidence scores** returned alongside the prediction, not just a bare label
+- **Dockerized deployment** for consistent and reproducible application environments
 
+- 
 ## Model Information
 
 | Aspect | Details |
@@ -52,6 +55,25 @@ The project is intentionally structured to mirror an industry-style layout, sepa
 Full exploratory data analysis, preprocessing, training, and evaluation steps are documented in `Model/churn_EDA.ipynb`.
 
 Not every feature the model was trained on is exposed through the API. Twelve of the more interpretable, user-friendly attributes (age, gender, job role, education, income, job satisfaction, department, overtime, business travel, total working years, work-life balance, marital status) are collected from the caller; the remaining features the pipeline expects are filled in with fixed default values.
+
+
+## Docker
+
+## Docker
+
+The application is available as a Docker image on Docker Hub.
+
+```bash
+docker pull dockervivekacharya/employee_churn
+
+## Run the container:
+docker run -p 8000:8000 dockervivekacharya/employee_churn
+
+The API can then be accessed at:
+http://localhost:8000/docs
+
+
+
 
 ## API Endpoints
 
@@ -145,18 +167,6 @@ Logistic_Regression/
 │   └── screenshots/                            # Screenshots used in this README
 └── README.md
 ```
-
-## Future Improvements
-
-- **Dockerize the application** — Docker support is planned for a future version, to make deployment consistent across environments
-- **Frontend interface** — this project currently provides a REST API only; a simple web frontend may be added later to make predictions accessible without calling the API directly
-- Replace the hardcoded absolute model path with a relative or configuration-driven path
-- Set an explicit `title`, `description`, and `version` on the `FastAPI()` app instance — the interactive docs currently show FastAPI's default placeholder version (`0.1.0`), which is easy to confuse with `MODEL_VERSION` (`1.0.0`)
-- Add automated tests (unit tests for the API and schema validation)
-- Track experiments and model versions with a tool such as MLflow, instead of a hardcoded `MODEL_VERSION` string
-- Add a `.gitignore` to exclude virtual environments and `__pycache__` directories from version control
-- Add CI/CD for automated linting, testing, and deployment
-- Explore additional models (e.g. tree-based ensembles) and threshold tuning to further improve recall without sacrificing as much precision
 
 ## API Screenshot
 
